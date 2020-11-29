@@ -4,6 +4,7 @@ export var title = "Dodge the Creeps!"
 export var version = "v1.0.0.1"
 export (PackedScene) var Mob
 var score
+var scoreMax = 0
 
 func _process(delta):
 	# Ajout du compteur de FPS
@@ -23,6 +24,9 @@ func new_game():
 	$HUD.show_message("Lancement!")
 
 func game_over():
+	if(scoreMax < score):
+		scoreMax = score
+		$HUD.update_score_max("Record: " + str(scoreMax))
 	$Player/ScoreTimer.stop()
 	$Player/MobTimer.stop()
 	$Music.stop()
