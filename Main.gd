@@ -49,7 +49,7 @@ func _on_MobTimer_timeout():
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
 
 func _on_ScoreTimer_timeout():
-	score += 10
+	score += 1
 	$HUD.update_score(score)
 
 func _on_StartTimer_timeout():
