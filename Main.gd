@@ -1,15 +1,18 @@
 extends Node
 
 export var title = "Dodge the Creeps!"
+export var version = "v2.0.0.0"
 export (PackedScene) var Mob
 var score
 
 func _process(delta):
-	# Ajout du compteur de FPS dans le titre de la fenêtre
-	OS.set_window_title(title + " | FPS: " + str(Engine.get_frames_per_second()))
+	# Ajout du compteur de FPS
+	var FPSCounter = str(Engine.get_frames_per_second())
+	$HUD/FPSLabel.text = "FPS: " + FPSCounter
 
 func _ready():
 	randomize()
+	$HUD/VersionLabel.text = version
 
 func new_game():
 	score = 0
