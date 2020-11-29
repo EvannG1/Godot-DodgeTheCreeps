@@ -1,7 +1,7 @@
 extends Node
 
 export var title = "Dodge the Creeps!"
-export var version = "v1.0.0.2"
+export var version = "v1.0.0.3"
 export (PackedScene) var Mob
 var score
 var scoreMax = 0
@@ -49,7 +49,7 @@ func _on_MobTimer_timeout():
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
 
 func _on_ScoreTimer_timeout():
-	score += 1
+	score += 10
 	$HUD.update_score(score)
 
 func _on_StartTimer_timeout():
