@@ -17,6 +17,13 @@ func _ready():
 
 func new_game():
 	score = 0
+	# Gestion du volume
+	if($HUD.volume < -24):
+		$Music.set_volume_db(-80)
+		$DeathSound.set_volume_db(-80)
+	else:
+		$Music.set_volume_db($HUD.volume)
+		$DeathSound.set_volume_db($HUD.volume)
 	$Music.play()
 	$Player.start($Player/StartPosition.position)
 	$Player/StartTimer.start()

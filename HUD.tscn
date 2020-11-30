@@ -105,8 +105,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 136.0
+margin_top = 632.0
+margin_right = 345.0
+margin_bottom = 672.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_top = 13.0
+margin_right = 63.0
+margin_bottom = 27.0
+text = "Musique :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicSlider" type="HSlider" parent="HBoxContainer"]
+margin_left = 67.0
+margin_right = 209.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -25.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="value_changed" from="HBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
