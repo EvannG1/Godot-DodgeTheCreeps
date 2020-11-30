@@ -9,6 +9,9 @@ func show_message(text):
 	$MessageLabel.show()
 	$MessageTimer.start()
 
+func _on_MessageTimer_timeout():
+	$MessageLabel.hide()
+
 func show_game_over():
 	show_message("Perdu!")
 	yield($MessageTimer, "timeout")
@@ -25,15 +28,18 @@ func update_score(score):
 func update_score_max(scoreMax):
 	$ScoreMaxLabel.text = str(scoreMax)
 
-func _on_MessageTimer_timeout():
-	$MessageLabel.hide()
-
-
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	$HBoxContainer.hide()
 	emit_signal("start_game")
 
-
 func _on_MusicSlider_value_changed(value):
 	volume = value
+
+func show_level(text):
+	$LevelLabel.bbcode_text = text
+	$LevelLabel.show()
+	$LevelTimer.start()
+
+func _on_LevelTimer_timeout():
+	$LevelLabel.hide()

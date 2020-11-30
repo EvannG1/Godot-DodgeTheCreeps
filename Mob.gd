@@ -10,3 +10,15 @@ func _ready():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+func get_min_speed():
+	return min_speed
+
+func get_max_speed():
+	return max_speed
+
+func set_min_speed(value):
+	min_speed = value
+
+func set_max_speed(value):
+	max_speed = value

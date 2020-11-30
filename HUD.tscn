@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://dodge_assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
@@ -15,11 +15,15 @@ font_data = ExtResource( 1 )
 size = 11
 font_data = ExtResource( 1 )
 
-[sub_resource type="InputEventAction" id=4]
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=5]
 action = "ui_select"
 
-[sub_resource type="ShortCut" id=5]
-shortcut = SubResource( 4 )
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -89,6 +93,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LevelLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -111.5
+margin_top = 86.0
+margin_right = 111.5
+margin_bottom = 122.0
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center][wave][rainbow]Niveau 1[/rainbow][/wave][/center]"
+text = "Niveau 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -99,7 +118,7 @@ margin_top = -200.0
 margin_right = 105.0
 margin_bottom = -100.0
 custom_fonts/font = SubResource( 1 )
-shortcut = SubResource( 5 )
+shortcut = SubResource( 6 )
 text = "Jouer"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -138,6 +157,11 @@ __meta__ = {
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="value_changed" from="HBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
