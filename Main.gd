@@ -1,7 +1,7 @@
 extends Node
 
 export var title = "Dodge the Creeps!"
-export var version = "v1.0.0.3"
+export var version = "v1.0.0.4"
 export (PackedScene) var Mob
 var score
 var scoreMax = 0
